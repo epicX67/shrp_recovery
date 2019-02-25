@@ -1,0 +1,6 @@
+#!/sbin/sh
+# Magisk Manager for Recovery Mode (mm)
+# VR25 @ xda-developers
+	umount /magisk
+	rmdir /magisk
+	exit 1
