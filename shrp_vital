@@ -1,0 +1,1 @@
+ro.shrp.recovery.block=/dev/block/bootdevice/by-name/recovery
