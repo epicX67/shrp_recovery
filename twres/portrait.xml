@@ -5544,7 +5544,7 @@ fi
 				<text>{@c_root=Root}</text>
 				<actions>
 					<action function="set">tw_back=c_magisk_bhosdk</action>
-					<action function="set">tw_filename=/sdcard/SHRP/epicx/c_magisk</action>
+					<action function="set">tw_filename=/sdcard/SHRP/epicx/c_magisk.zip</action>
 					<action function="set">tw_action=queuezip</action>
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=flash</action>
@@ -5560,7 +5560,7 @@ fi
 				<text>{@c_unroot=Unroot}</text>
 				<actions>
 					<action function="set">tw_back=c_magisk_bhosdk</action>
-					<action function="set">tw_filename=/sdcard/SHRP/epicx/unmagisk</action>
+					<action function="set">tw_filename=/sdcard/SHRP/epicx/unmagisk.zip</action>
 					<action function="set">tw_action=queuezip</action>
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=flash</action>
