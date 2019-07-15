@@ -542,7 +542,10 @@
 		<string name="update_part_details_done">...done</string>
 		<string name="wiping_dalvik">Wiping Dalvik Cache Directories...</string>
 		<string name="cleaned">Cleaned: {1}...</string>
-		<string name="dalvik_done">-- Dalvik Cache Directories Wipe Complete!</string>
+		<string name="cache_dalvik_done">-- Dalvik Cache Directories Wipe Complete!</string>
+		<string name="wipe_dalvik_btn">Wipe Dalvik</string>
+		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
+		<string name="wipe_dalvik_complete">Dalvik Wipe Complete</string>
 		<string name="no_andsec">No android secure partitions found.</string>
 		<string name="unable_to_locate">Unable to locate {1}.</string>
 		<string name="wiping_datamedia">Wiping internal storage -- /data/media...</string>
