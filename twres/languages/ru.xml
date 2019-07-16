@@ -537,7 +537,10 @@
 		<string name="update_part_details_done">...готово</string>
 		<string name="wiping_dalvik">Очистка директорий Dalvik Cache...</string>
 		<string name="cleaned">Очищены: {1}...</string>
-		<string name="dalvik_done">-- Очистка директорий Dalvik Cache завершена!</string>
+		<string name="cache_dalvik_done">-- Очистка директорий Dalvik Cache завершена!</string>
+		<string name="wipe_dalvik_btn">Очистка dalvik</string>
+		<string name="wipe_dalvik_confirm">Очистить Dalvik?</string>
+		<string name="wipe_dalvik_complete">Очистка Dalvik завершена</string>
 		<string name="no_andsec">Не найдены разделы android secure.</string>
 		<string name="unable_to_locate">{1} не найден.</string>
 		<string name="wiping_datamedia">Очистка внутренней памяти -- /data/media...</string>
