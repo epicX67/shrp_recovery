@@ -775,7 +775,11 @@
 		</template>
 	<!--Custom_template_epicX-->
 		<template name="c_reboot_page">
-			<background color="%semi_transparent%"/>
+			<button>
+				<placement x="0" y="0" w="1080" h="1920"/>
+				<fill color="%semi_transparent%"/>
+				<action function="overlay"/>
+			</button>
 			<image>
 				<placement x="744" y="315" />
 				<image resource="c_power_menu_bg"/>
@@ -919,7 +923,11 @@
 			</action>
 		</template>
 		<template name="c_advanced_reboot_page">
-			<background color="%semi_transparent%"/>
+			<button>
+				<placement x="0" y="0" w="1080" h="1920"/>
+				<fill color="%semi_transparent%"/>
+				<action function="overlay"/>
+			</button>
 			<image>
 				<placement x="744" y="315" />
 				<image resource="c_power_menu_bg"/>

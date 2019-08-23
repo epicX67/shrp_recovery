@@ -19,7 +19,6 @@
 		<resource name="c_dashboard_text" type="fontoverride" filename="Product_sans.ttf" scale="100" />
 		<resource name="c_th_txt" type="fontoverride" filename="Product_sans.ttf" scale="100" />
 		<resource name="c_lock_clock" type="fontoverride" filename="Product_sans.ttf" scale="100" />
-		<resource name="c_hider" type="fontoverride" filename="Product_sans.ttf" scale="100" />
 		<!-- Nama tampilan partisi -->
        <string name = "system"> System </string>
        <string name = "system_image"> Gambar Sistem </string>

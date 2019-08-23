@@ -1159,7 +1159,7 @@ sh c_core_checker;
 				<text>{@c_action_cancel=Press back button to cancel.}</text>
 			</text>
 			<button>
-				<placement x="860" y="1628"/>
+				<placement x="586" y="1628"/>
 				<image resource="c_advance_wipe"/>
 				<actions>
 					<action function="set">partitionlisterror=0</action>
@@ -1172,7 +1172,7 @@ sh c_core_checker;
 					<condition var1="tw_is_encrypted" var2="1"/>
 					<condition var1="tw_has_data_media" var2="0"/>
 				</conditions>
-				<placement x="860" y="1270"/>
+				<placement x="586" y="1270"/>
 				<image resource="c_format_data"/>
 				<actions>
 					<action function="set">tw_back=wipe</action>
@@ -1189,7 +1189,7 @@ sh c_core_checker;
 			</button>
 			<button>
 				<condition var1="tw_has_data_media" var2="1"/>
-				<placement x="860" y="1270"/>
+				<placement x="586" y="1270"/>
 				<image resource="c_format_data"/>
 				<actions>
 					<action function="page">formatdata</action>
@@ -1197,26 +1197,58 @@ sh c_core_checker;
 			</button>
 
 			<button>
-				<placement x="860" y="1450"/>
+				<placement x="586" y="1450"/>
 				<image resource="c_factory_reset"/>
 				<action function="page">c_wipe_factory_confirmer</action>
 			</button>
-			<text color="%c_grey%">
-				<condition var1="tw_has_data_media" var2="1"/>
-				<font resource="c_dashboard_header"/>
-				<placement x="540" y="1309"/>
-				<text>{@c_format_data=Format Data}</text>
-			</text>
-			<text color="%c_grey%">
+			<button>
+				<placement x="597" y="1450" h="144" w="276"/>
+				<fill color="%transparent%"/>
+				<font resource="c_dashboard_text_sort" color="#ffffff"/>
+				<text>{@wipe_btn=Wipe}</text>
+				<action function="page">c_wipe_factory_confirmer</action>
+			</button>
+			<button>
+				<placement x="597" y="1628" h="144" w="276"/>
+				<fill color="%transparent%"/>
+				<font resource="c_dashboard_text_sort" color="#ffffff"/>
+				<text>{@advanced_wipe_hdr=Advance Wipe}</text>
+				<actions>
+					<action function="set">partitionlisterror=0</action>
+					<action function="page">advancedwipe</action>
+				</actions>
+			</button>
+			<button>
 				<conditions>
 					<condition var1="tw_is_encrypted" var2="1"/>
 					<condition var1="tw_has_data_media" var2="0"/>
 				</conditions>
-				<font resource="c_dashboard_header"/>
-				<placement x="450" y="1309"/>
+				<placement x="597" y="1270" h="144" w="276"/>
+				<fill color="%transparent%"/>
+				<font resource="c_dashboard_text_sort" color="#ffffff"/>
 				<text>{@c_format_data2=Remove Encryption}</text>
-			</text>
-			<text color="%c_grey%">
+				<actions>
+					<action function="set">tw_back=wipe</action>
+					<action function="set">tw_action=wipe</action>
+					<action function="set">tw_action_param=DATAMEDIA</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@wipe_enc_confirm=Wipe Encryption from Data?}</action>
+					<action function="set">tw_text2=</action>
+					<action function="set">tw_action_text1={@formatting_data=Formatting Data...}</action>
+					<action function="set">tw_complete_text1={@format_data_complete=Data Format Complete}</action>
+					<action function="set">tw_slider_text={@swipe_format_data=Swipe to Format Data}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			<button>
+				<condition var1="tw_has_data_media" var2="1"/>
+				<placement x="597" y="1270" h="144" w="276"/>
+				<fill color="%transparent%"/>
+				<font resource="c_dashboard_text_sort" color="#ffffff"/>
+				<text>{@c_format_data=Format Data}</text>
+				<action function="page">formatdata</action>
+			</button>
+			<!--text color="%c_grey%">
 				<font resource="c_dashboard_header"/>
 				<placement x="700" y="1487"/>
 				<text>{@wipe_btn=Wipe}</text>
@@ -1225,7 +1257,7 @@ sh c_core_checker;
 				<font resource="c_dashboard_header"/>
 				<placement x="460" y="1665"/>
 				<text>{@advanced_wipe_hdr=Advance Wipe}</text>
-			</text>
+			</text-->
 
 			<action>
 				<touch key="back"/>
@@ -4090,7 +4122,7 @@ sh c_core_checker;
 			</text>
 			<button>
 				<placement x="860" y="1628"/>
-				<image resource="c_factory_reset"/>
+				<image resource="c_ok"/>
 				<actions>
 					<action function="set">tw_back=wipe</action>
 					<action function="set">tw_action=wipe</action>
@@ -5544,7 +5576,7 @@ fi
 				<text>{@c_root=Root}</text>
 				<actions>
 					<action function="set">tw_back=c_magisk_bhosdk</action>
-					<action function="set">tw_filename=/sdcard/SHRP/epicx/c_magisk</action>
+					<action function="set">tw_filename=/sdcard/SHRP/epicx/c_magisk.zip</action>
 					<action function="set">tw_action=queuezip</action>
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=flash</action>
@@ -5560,7 +5592,7 @@ fi
 				<text>{@c_unroot=Unroot}</text>
 				<actions>
 					<action function="set">tw_back=c_magisk_bhosdk</action>
-					<action function="set">tw_filename=/sdcard/SHRP/epicx/unmagisk</action>
+					<action function="set">tw_filename=/sdcard/SHRP/epicx/unmagisk.zip</action>
 					<action function="set">tw_action=queuezip</action>
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=flash</action>
@@ -7025,6 +7057,7 @@ cp /data/cookies/ramdisk/twres/c_nav_sub/c_pink/*.png /data/cookies/ramdisk/twre
 			<button>
 				<conditions>
 					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_black" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7035,9 +7068,264 @@ cp /data/cookies/ramdisk/twres/c_nav_sub/c_pink/*.png /data/cookies/ramdisk/twre
 					<action function="set">c_nav_type_custom=0</action>
 					<action function="cmd">
 cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_dark/. /data/cookies/ramdisk/twres/images/;
 </action>
 				</actions>
 			</button>
+			
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_blue" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_blue/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_brown" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_brown/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_indigo" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_indigo/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_teal" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_teal/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_orange" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_orange/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_red" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_red/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_rr" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_lred/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_pink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_pink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_rpink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_rpink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_green" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_green/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_cyan" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_cyan/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_yellow" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_yellow/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_purple" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_purple/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_pie" op="=" var2="0"/>
+					<condition var1="c_acc_color_white" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_1st_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=1</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_white/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			
 			<image>
 				<conditions>
 					<condition var1="c_nav_type_pie" op="=" var2="1"/>
@@ -7050,10 +7338,10 @@ cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
 				<text>{@c_dc_default=Default}</text>
 			</text>
 			
-			
 			<button>
 				<conditions>
 					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_black" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7064,6 +7352,260 @@ cp -a /twres/c_nav/c_default/. /data/cookies/ramdisk/twres/c_nav_sub/;
 					<action function="set">c_nav_type_custom=0</action>
 					<action function="cmd">
 cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_dark/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_blue" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_blue/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_brown" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_brown/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_indigo" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_indigo/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_teal" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_teal/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_orange" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_orange/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_red" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_red/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_rr" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_lred/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_pink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_pink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_rpink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_rpink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_green" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_green/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_cyan" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_cyan/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_yellow" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_yellow/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_purple" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_purple/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_samsung" op="=" var2="0"/>
+					<condition var1="c_acc_color_white" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_2nd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=1</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_white/. /data/cookies/ramdisk/twres/images/;
 </action>
 				</actions>
 			</button>
@@ -7083,6 +7625,7 @@ cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
 			<button>
 				<conditions>
 					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_black" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7093,9 +7636,264 @@ cp -a /twres/c_nav/c_samsung/. /data/cookies/ramdisk/twres/c_nav_sub/;
 					<action function="set">c_nav_type_custom=0</action>
 					<action function="cmd">
 cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_dark/. /data/cookies/ramdisk/twres/images/;
 </action>
 				</actions>
 			</button>
+			
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_blue" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_blue/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_brown" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_brown/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_indigo" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_indigo/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_teal" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_teal/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_orange" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_orange/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_red" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_red/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_rr" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_lred/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_pink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_pink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_rpink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_rpink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_green" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_green/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_cyan" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_cyan/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_yellow" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_yellow/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_purple" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_purple/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_nxt_bit" op="=" var2="0"/>
+					<condition var1="c_acc_color_white" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_3rd_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=1</action>
+					<action function="set">c_nav_type_custom=0</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_white/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			
 			<image>
 				<conditions>
 					<condition var1="c_nav_type_nxt_bit" op="=" var2="1"/>
@@ -7111,6 +7909,7 @@ cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
 			<button>
 				<conditions>
 					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_black" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7121,9 +7920,264 @@ cp -a /twres/c_nav/c_nxtbit/. /data/cookies/ramdisk/twres/c_nav_sub/;
 					<action function="set">c_nav_type_custom=1</action>
 					<action function="cmd">
 cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_dark/. /data/cookies/ramdisk/twres/images/;
 </action>
 				</actions>
 			</button>
+			
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_blue" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_blue/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_brown" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_brown/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_indigo" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_indigo/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_teal" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_teal/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_orange" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_orange/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_red" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_red/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_rr" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_lred/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_pink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_pink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_rpink" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_rpink/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_green" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_green/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_cyan" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_cyan/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_yellow" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_yellow/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_purple" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_purple/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_nav_type_custom" op="=" var2="0"/>
+					<condition var1="c_acc_color_white" op="=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_4th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_nav_type_pie=0</action>
+					<action function="set">c_nav_type_samsung=0</action>
+					<action function="set">c_nav_type_nxt_bit=0</action>
+					<action function="set">c_nav_type_custom=1</action>
+					<action function="cmd">
+cp -a /twres/c_nav/c_custom/. /data/cookies/ramdisk/twres/c_nav_sub/;
+cp -a /data/cookies/ramdisk/twres/c_nav_sub/c_white/. /data/cookies/ramdisk/twres/images/;
+</action>
+				</actions>
+			</button>
+			
 			<image>
 				<conditions>
 					<condition var1="c_nav_type_custom" op="=" var2="1"/>
@@ -7428,6 +8482,7 @@ cp /twres/cache/default/notch_handled_var.xml /data/cookies/ramdisk/twres/
 					<condition var1="c_battery_icon_triger" op="=" var2="1"/>
 					<condition var1="c_status_bar_triger" op="=" var2="1"/>
 					<condition var1="c_battery_portrait_icon_triger" op="=" var2="0"/>
+					<condition var1="c_white_bg" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_6th_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7437,6 +8492,26 @@ cp /twres/cache/default/notch_handled_var.xml /data/cookies/ramdisk/twres/
 					<action function="cmd">
 cp /twres/c_battery/default/c_white/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_white/;
 cp /twres/c_battery/default/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_black/;
+cp /twres/c_battery/default/c_white/*.png /data/cookies/ramdisk/twres/images/;
+					</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_battery_icon_triger" op="=" var2="1"/>
+					<condition var1="c_status_bar_triger" op="=" var2="1"/>
+					<condition var1="c_battery_portrait_icon_triger" op="=" var2="0"/>
+					<condition var1="c_white_bg" op="!=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_6th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_battery_portrait_icon_triger=1</action>
+					<action function="set">c_battery_circle_icon_triger=0</action>
+					<action function="cmd">
+cp /twres/c_battery/default/c_white/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_white/;
+cp /twres/c_battery/default/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_black/;
+cp /twres/c_battery/default/c_black/*.png /data/cookies/ramdisk/twres/images/;
 					</action>
 				</actions>
 			</button>
@@ -7462,6 +8537,7 @@ cp /twres/c_battery/default/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c
 					<condition var1="c_battery_icon_triger" op="=" var2="1"/>
 					<condition var1="c_status_bar_triger" op="=" var2="1"/>
 					<condition var1="c_battery_circle_icon_triger" op="=" var2="0"/>
+					<condition var1="c_white_bg" op="=" var2="1"/>
 				</conditions>
 				<placement x="%c_hawk_base_column%" y="%t_7th_radio_pos%"/>
 				<image resource="radio_false"/>
@@ -7471,6 +8547,26 @@ cp /twres/c_battery/default/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c
 					<action function="cmd">
 cp /twres/c_battery/circle/c_white/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_white/;
 cp /twres/c_battery/circle/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_black/;
+cp /twres/c_battery/circle/c_white/*.png /data/cookies/ramdisk/twres/images/;
+					</action>
+				</actions>
+			</button>
+			<button>
+				<conditions>
+					<condition var1="c_battery_icon_triger" op="=" var2="1"/>
+					<condition var1="c_status_bar_triger" op="=" var2="1"/>
+					<condition var1="c_battery_circle_icon_triger" op="=" var2="0"/>
+					<condition var1="c_white_bg" op="!=" var2="1"/>
+				</conditions>
+				<placement x="%c_hawk_base_column%" y="%t_7th_radio_pos%"/>
+				<image resource="radio_false"/>
+				<actions>
+					<action function="set">c_battery_portrait_icon_triger=0</action>
+					<action function="set">c_battery_circle_icon_triger=1</action>
+					<action function="cmd">
+cp /twres/c_battery/circle/c_white/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_white/;
+cp /twres/c_battery/circle/c_black/*.png /data/cookies/ramdisk/twres/c_bg_sub/c_black/;
+cp /twres/c_battery/circle/c_black/*.png /data/cookies/ramdisk/twres/images/;
 					</action>
 				</actions>
 			</button>

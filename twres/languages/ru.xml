@@ -868,5 +868,6 @@
 		<string name="c_fpc">Удалить блокировку отпечатков пальцев с вашего устройства</string>
 		<string name="c_rfe">Удалить принудительное шифрование с вашего устройства</string>
 		<string name="c_c2a">Camera 2 Api вкл/выкл</string>
+		<string name="cache_dalvik_done">-- Очистка директорий Dalvik Cache завершена!</string>
 	</resources>
 </language>

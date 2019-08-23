@@ -15,7 +15,7 @@
 		<variable name="device_code_name" value="C103"/>
 		<variable name="device_maintainer_name" value="epicX"/>
 		<variable name="shrp_ver" value="V2"/>
-		<variable name="shrp_ver_status" value="Beta"/>
+		<variable name="shrp_ver_status" value="Stable"/>
 		<variable name="has_edl_mode" value="1"/>
 		<variable name="has_flashlight" value="1"/>
 	</variables>
